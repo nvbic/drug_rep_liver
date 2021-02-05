@@ -6,10 +6,10 @@ now = datetime.now()
 from sas7bdat import SAS7BDAT
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
-with SAS7BDAT('/data/userData/zehao.yu/drug_repropose/zarrinpar_med_admin.sas7bdat') as f:
+with SAS7BDAT('/data/userData/zehao.yu/drug_repropose/zarrinpar_prescribing.sas7bdat') as f:
 	df=f.to_data_frame()
 	f.close()
-df.to_csv('/data/userData/zehao.yu/drug_repropose/med_admin.csv')
+df.to_csv('/data/userData/zehao.yu/drug_repropose/prescribing.csv')
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
