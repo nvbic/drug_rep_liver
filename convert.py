@@ -4,16 +4,29 @@ import pandas as pd
 now = datetime.now()
 
 from sas7bdat import SAS7BDAT
+import gc
+#encounter lab
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
-with SAS7BDAT('/data/userData/zehao.yu/drug_repropose/zarrinpar_prescribing.sas7bdat') as f:
+with SAS7BDAT('/data/userData/zehao.yu/drug_repropose/zarrinpar_encounter.sas7bdat') as f:
 	df=f.to_data_frame()
 	f.close()
-df.to_csv('/data/userData/zehao.yu/drug_repropose/prescribing.csv')
+df.to_csv('/data/userData/zehao.yu/drug_repropose/encounter.csv')
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
-
+del df
+gc.collect()
+#lab
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)
+with SAS7BDAT('/data/userData/zehao.yu/drug_repropose/zarrinpar_lab.sas7bdat') as f:
+	df=f.to_data_frame()
+	f.close()
+df.to_csv('/data/userData/zehao.yu/drug_repropose/lab.csv')
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)
 # current_time = now.strftime("%H:%M:%S")
 # print("Current Time =", current_time)
 # file_dicts = [
